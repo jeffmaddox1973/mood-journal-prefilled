@@ -38,6 +38,12 @@
         }
       ],
       "expo-sqlite"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "7e47f5d5-59f6-42d9-be44-05026722ae09"
+      }
+    },
+    "owner": "jeflon"
   }
 }
