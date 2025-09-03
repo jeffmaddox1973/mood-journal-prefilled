@@ -11,12 +11,8 @@
       "resizeMode": "contain",
       "backgroundColor": "#0b1020"
     },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "updates": { "fallbackToCacheTimeout": 0 },
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.jm.moodjournal"
@@ -30,13 +26,9 @@
       }
     },
     "plugins": [
-      "react-native-purchases",
       [
         "expo-notifications",
-        {
-          "icon": "./assets/icon.png",
-          "color": "#0b1020"
-        }
+        { "icon": "./assets/icon.png", "color": "#0b1020" }
       ]
     ]
   }
