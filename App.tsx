@@ -1,15 +1,14 @@
-
+cat > App.tsx <<'TS'
 import React, { useEffect } from 'react';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { useColorScheme, Platform } from 'react-native';
+import { useColorScheme } from 'react-native';
 import Today from './screens/Today';
 import History from './screens/History';
 import Settings from './screens/Settings';
 import Paywall from './screens/Paywall';
 import { initDB } from './lib/db';
-import Purchases, { LOG_LEVEL } from 'react-native-purchases';
 
 const Stack = createNativeStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -29,12 +28,6 @@ export default function App() {
   const scheme = useColorScheme();
   useEffect(() => {
     initDB();
-    Purchases.setLogLevel(LOG_LEVEL.WARN);
-    if (Platform.OS === 'ios') {
-      Purchases.configure({ apiKey: 'YOUR_REVENUECAT_APPLE_API_KEY' });
-    } else {
-      Purchases.configure({ apiKey: 'YOUR_REVENUECAT_GOOGLE_API_KEY' });
-    }
   }, []);
 
   return (
@@ -45,3 +38,5 @@ export default function App() {
     </NavigationContainer>
   );
 }
+TS
+
