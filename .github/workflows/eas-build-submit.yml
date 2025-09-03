@@ -29,7 +29,15 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: "20" }
       - run: npm i -g eas-cli expo-cli
-      - run: npm ci || npm install
+- name: Install deps
+  run: |
+    npm config set fund false
+    npm config set audit false
+    if [ -f package-lock.json ]; then
+      npm ci --legacy-peer-deps
+    else
+      npm install --legacy-peer-deps
+    fi
       - name: Decode App Store Connect API key
         if: ${{ inputs.platform == 'ios' || inputs.platform == 'all' }}
         run: echo "$APP_STORE_CONNECT_PRIVATE_KEY" | base64 -d > asc_key.p8
